@@ -1,0 +1,46 @@
+/**
+ * Semantic tokens — the only layer component CSS should reference.
+ * Each one aliases a primitive, matching the palette -> semantic structure in Figma.
+ *
+ * Theme axis (this file = "default" theme only, per current scope):
+ * a future theme adds a `[data-theme="..."] { ... }` block overriding these same
+ * custom properties — component CSS never changes.
+ *
+ * Color-scheme axis (light/dark) is a SEPARATE, independent concern from theme —
+ * do not fold both into one block. Dark mode is intentionally out of scope for now;
+ * when it's added, it gets its own `[data-color-scheme="dark"] { ... }` block here,
+ * not a variant of the theme block above.
+ */
+:root {
+  /* Primary button */
+  --button-primary-default-bg: var(--gray-500);
+  --button-primary-default-text: var(--gray-950);
+  --button-primary-hover-bg: var(--gray-200);
+  --button-primary-hover-text: var(--gray-950);
+  --button-primary-active-bg: var(--gray-600);
+  --button-primary-active-text: var(--gray-950);
+  --button-primary-disabled-bg: var(--gray-350);
+  --button-primary-disabled-text: var(--gray-500);
+  --button-primary-border-width: 0px;
+  --button-primary-border-color: var(--gray-850);
+
+  /* Shared across all button styles (not just Primary) */
+  --button-focus-border-color: var(--blue-2-500);
+  --button-focus-border-width: 4px;
+
+  /* Type */
+  --button-font-family: var(--font-family-primary);
+  --button-font-weight: var(--font-weight-medium);
+  --button-font-size-default: 18px;
+  --button-font-size-small: 16px;
+  --button-line-height: 25px;
+
+  /* Layout */
+  --button-radius-default: var(--radius-8);
+  --button-radius-small: var(--radius-4);
+  --button-padding-x-default: var(--spacing-24);
+  --button-padding-y-default: var(--spacing-16);
+  --button-padding-small: var(--spacing-16);
+  --button-icon-gap: var(--spacing-8);
+  --button-height-small: 40px;
+}

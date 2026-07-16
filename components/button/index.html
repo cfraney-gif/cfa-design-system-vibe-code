@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CfA Button — Primary (prototype)</title>
+  <link rel="stylesheet" href="button.css" />
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 24px;
+      color: #121212;
+    }
+    section { margin-bottom: 48px; }
+    h2 { font-size: 20px; border-bottom: 1px solid #e5e5e5; padding-bottom: 8px; }
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .row .label {
+      width: 90px;
+      font-size: 13px;
+      color: #666;
+    }
+    .note {
+      font-size: 13px;
+      color: #666;
+      background: #f7f7f7;
+      border-radius: 6px;
+      padding: 12px 16px;
+    }
+    /* DEMO-ONLY: forces a pseudo-class's visual appearance for the static
+       gallery below, so every state can be seen at once without literally
+       hovering/tabbing to each button. Never ship these classes — real
+       buttons get these looks for free from :hover/:active/:focus-visible. */
+    .demo-hover { background: var(--button-primary-hover-bg) !important; color: var(--button-primary-hover-text) !important; box-shadow: 0px 3px 0px 0px rgba(0,0,0,0.3) !important; }
+    .demo-active { background: var(--button-primary-active-bg) !important; color: var(--button-primary-active-text) !important; }
+    .demo-focus { outline: var(--button-focus-border-width) solid var(--button-focus-border-color) !important; outline-offset: 0 !important; }
+  </style>
+</head>
+<body>
+  <h1>CfA Button — Primary</h1>
+  <p class="note">
+    Prototype scope: Primary style only, all states and sizes, default theme, no dark mode yet.
+    Icons below are generic placeholders standing in for the real Figma icon assets.
+  </p>
+
+  <section>
+    <h2>Live — try it for real</h2>
+    <div class="row">
+      <button class="cfa-button cfa-button--primary">Continue</button>
+      <button class="cfa-button cfa-button--primary" disabled>Continue</button>
+      <button class="cfa-button cfa-button--primary cfa-button--small">Continue</button>
+    </div>
+    <p class="note">Tab to these with your keyboard to see the real focus ring; click and hold to see the real active state.</p>
+  </section>
+
+  <section>
+    <h2>States — regular size</h2>
+    <div class="row"><span class="label">Default</span><button class="cfa-button cfa-button--primary">Button</button></div>
+    <div class="row"><span class="label">Hover</span><button class="cfa-button cfa-button--primary demo-hover">Button</button></div>
+    <div class="row"><span class="label">Active</span><button class="cfa-button cfa-button--primary demo-active">Button</button></div>
+    <div class="row"><span class="label">Focused</span><button class="cfa-button cfa-button--primary demo-focus">Button</button></div>
+    <div class="row"><span class="label">Disabled</span><button class="cfa-button cfa-button--primary" disabled>Button</button></div>
+  </section>
+
+  <section>
+    <h2>States — small size</h2>
+    <div class="row"><span class="label">Default</span><button class="cfa-button cfa-button--primary cfa-button--small">Button</button></div>
+    <div class="row"><span class="label">Hover</span><button class="cfa-button cfa-button--primary cfa-button--small demo-hover">Button</button></div>
+    <div class="row"><span class="label">Active</span><button class="cfa-button cfa-button--primary cfa-button--small demo-active">Button</button></div>
+    <div class="row"><span class="label">Focused</span><button class="cfa-button cfa-button--primary cfa-button--small demo-focus">Button</button></div>
+    <div class="row"><span class="label">Disabled</span><button class="cfa-button cfa-button--primary cfa-button--small" disabled>Button</button></div>
+  </section>
+
+  <section>
+    <h2>Icon placement</h2>
+    <div class="row">
+      <span class="label">Left (same-page action)</span>
+      <button class="cfa-button cfa-button--primary">
+        <svg class="cfa-button__icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Edit
+      </button>
+    </div>
+    <div class="row">
+      <span class="label">Right (forward/nav)</span>
+      <button class="cfa-button cfa-button--primary">
+        Continue
+        <svg class="cfa-button__icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Known, not fixed here</h2>
+    <p class="note">
+      Default and Hover backgrounds (#b0b0b0 / #dfdfdf) fall below the 3:1 non-text contrast
+      minimum against a white page — flagged during the Figma review, left as-is per the design
+      spec since fixing it wasn't part of this task. Active and Focused already meet contrast
+      (fixed earlier in the Figma file). Text-on-background contrast passes comfortably in every state.
+    </p>
+  </section>
+</body>
+</html>

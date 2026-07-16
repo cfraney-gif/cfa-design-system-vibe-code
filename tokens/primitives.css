@@ -1,0 +1,31 @@
+/**
+ * Primitive tokens — raw palette values.
+ * Never reference these directly from component CSS; go through semantic.css.
+ * Values pulled from the CfA Design System Figma file (palette collection, "default" theme).
+ */
+:root {
+  /* neutral / brand-primary ramp (shared value at these specific steps in "default" theme) */
+  --gray-200: #dfdfdf;
+  --gray-350: #c8c8c8;
+  --gray-500: #b0b0b0;
+  --gray-600: #8d8d8d;
+  --gray-850: #353535;
+  --gray-950: #121212;
+
+  /* blue-2 ramp */
+  --blue-2-500: #2206c0;
+
+  /* type */
+  --font-family-primary: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, sans-serif;
+  --font-weight-medium: 500;
+
+  /* spacing (only the steps this component needs so far) */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+
+  /* radius */
+  --radius-4: 4px;
+  --radius-8: 8px;
+}

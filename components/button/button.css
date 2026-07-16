@@ -1,0 +1,108 @@
+@import url("../../tokens/primitives.css");
+@import url("../../tokens/semantic.css");
+
+/**
+ * CfA Button — Primary style only (this pass).
+ * No JavaScript required: default/hover/active/focus/disabled all map to
+ * native CSS pseudo-classes and the `disabled` attribute. This is a real
+ * <button> element throughout — never a styled <div> — so keyboard access,
+ * the accessible name, and the click/Enter/Space activation model all come
+ * from the browser for free.
+ */
+
+.cfa-button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--button-icon-gap);
+  cursor: pointer;
+  font-family: var(--button-font-family);
+  font-weight: var(--button-font-weight);
+  line-height: var(--button-line-height);
+  white-space: nowrap;
+  border-style: solid;
+  /* remove browser/UA default button chrome so tokens fully control appearance */
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* Always kill the browser's native focus ring first, unconditionally —
+   this must apply on plain :focus (not just :focus-visible), otherwise
+   some browsers/engines still paint their own default ring alongside the
+   custom one below, producing a double ring. Our own indicator is added
+   back deliberately by the :focus-visible rule per style, further down. */
+.cfa-button:focus {
+  outline: none;
+}
+
+.cfa-button__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+.cfa-button--small .cfa-button__icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* icon is purely decorative alongside a text label in this component —
+   screen readers should skip it and read only the button's text content */
+.cfa-button__icon[aria-hidden="true"] {
+  pointer-events: none;
+}
+
+/* ---------- Primary style ---------- */
+
+.cfa-button--primary {
+  background: var(--button-primary-default-bg);
+  color: var(--button-primary-default-text);
+  border-width: var(--button-primary-border-width);
+  border-color: var(--button-primary-border-color);
+  border-radius: var(--button-radius-default);
+  padding: var(--button-padding-y-default) var(--button-padding-x-default);
+  font-size: var(--button-font-size-default);
+}
+
+.cfa-button--primary:hover:not(:disabled) {
+  background: var(--button-primary-hover-bg);
+  color: var(--button-primary-hover-text);
+  box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.3);
+}
+
+.cfa-button--primary:active:not(:disabled) {
+  background: var(--button-primary-active-bg);
+  color: var(--button-primary-active-text);
+  box-shadow: none;
+}
+
+/* :focus-visible (not plain :focus) so the ring only appears for keyboard/
+   assistive-tech focus, not on every mouse click — matches how sighted mouse
+   users vs. keyboard users expect focus indication to behave.
+   Uses `outline`, not `border` — outline is drawn outside the box without
+   participating in layout, so the button's rendered size never changes when
+   the ring appears/disappears (border-width would have grown the box). */
+.cfa-button--primary:focus-visible {
+  outline: var(--button-focus-border-width) solid var(--button-focus-border-color);
+  outline-offset: 0;
+  /* keep the resting background visible under the ring, per the Figma spec
+     (focused state reuses the default-state background) */
+  background: var(--button-primary-default-bg);
+  color: var(--button-primary-default-text);
+}
+
+.cfa-button--primary:disabled {
+  background: var(--button-primary-disabled-bg);
+  color: var(--button-primary-disabled-text);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ---------- Small size ---------- */
+
+.cfa-button--small {
+  height: var(--button-height-small);
+  padding: var(--button-padding-small);
+  border-radius: var(--button-radius-small);
+  font-size: var(--button-font-size-small);
+}
